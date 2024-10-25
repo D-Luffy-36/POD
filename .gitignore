@@ -1,57 +1,34 @@
-# Mục tiêu của build
-/target/
-/build/
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-# Thư mục của IDE
-/.idea/
-/*.iml
-/.vscode/
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-# Thư viện đã biên dịch
-*.class
-
-# Tệp cấu hình của H2 Database
-*.mv.db
-*.trace.db
-*.log
-
-# Các tệp nhạy cảm
-application.properties
-application.yml
-
-# Tệp cấu hình của Maven
-/.mvn/
-
-# Thư mục chứa các tệp tạm thời của hệ thống
-*.tmp
-*.temp
-*.bak
-*.swp
-
-# Tệp chứa thông tin IDE
-*.project
-*.classpath
-*.settings/
-
-# Thư mục lưu trữ tệp cache
-/.gradle/
-.gradle/
-build/
-out/
-
-# Tệp cấu hình của JetBrains
-.idea/
+### IntelliJ IDEA ###
+.idea
+*.iws
 *.iml
+*.ipr
 
-# Tệp tạm thời
-*.log
-*.dSYM
-*.so
-*.dll
-*.exe
-*.out
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# Tệp nhạy cảm (không nên commit)
-*.jks
-*.keystore
-*.p12
+### VS Code ###
+.vscode/
+/src/main/resources/application.properties
