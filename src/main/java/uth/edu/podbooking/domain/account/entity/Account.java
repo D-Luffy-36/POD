@@ -1,45 +1,40 @@
 package uth.edu.podbooking.domain.account.entity;
-
-
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Date;
 
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "accounts")
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
+    private String firstName;
+
+    private String lastName;
+    private String fullName;
+    private String phone;
 
     @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
     private String password;
-
     private String img;
 
-    @Column(name = "is_acctive", nullable = false)
+    private double points;
     private Boolean isActive;
-    @Column(name = "is_vip", nullable = false)
-    private Boolean isVip;
 
-//    private Integer userId; // Chỉ lưu trữ ID người dùng
-
-//    private Integer typeId; // Chỉ lưu trữ ID loại tài khoản
-
-    @Column(name = "last_login")
-    private Date lastLogin;
-
-    @Column(name = "created_at")
-    private Date createdAt;
-
-    @Column(name = "updated_at")
-    private Date updatedAt;
+    private Date created;
+    private Date updated;
+    // vip_id
+    // location_id
 }
