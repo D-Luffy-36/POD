@@ -9,6 +9,7 @@ import uth.edu.podbooking.domain.account.mapper.AccountMapper;
 import uth.edu.podbooking.domain.account.repository.AccountRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Data
@@ -22,4 +23,15 @@ public class AccountService {
         System.out.println(accounts);
         return accountMapper.toAccountResponseList(accounts);
     }
+    public Optional<AccountResponse> fetchAccountById(Long id) {
+        Optional<Account> account = this.accountRepository.findById(id);
+        Optional<AccountResponse> accountResponse;
+
+        if (account.isPresent()) {
+            accountResponse = account.map(accountMapper::toAccountResponse);
+            return accountResponse;
+        }
+        return Optional.empty();
+    }
+
 }
