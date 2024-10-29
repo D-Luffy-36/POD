@@ -11,4 +11,10 @@ public class AccountResponse {
     private String fullName;
     private String email;
     private String phone;
+    private String errorMessage;
+    private boolean isActive;
+
+    public AccountResponse(String errorMessage) {
+        this.errorMessage = errorMessage; // Đặt thông báo lỗi
+    }
 }

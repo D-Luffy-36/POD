@@ -1,11 +1,11 @@
 package uth.edu.podbooking.domain.account.entity;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Date;
 
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -31,9 +31,11 @@ public class Account {
     private String img;
 
     private double points;
+
     private Boolean isActive;
 
     private Date created;
+
     private Date updated;
     // vip_id
     // location_id
