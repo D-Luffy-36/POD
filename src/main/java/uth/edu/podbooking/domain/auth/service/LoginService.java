@@ -1,4 +1,4 @@
-package uth.edu.podbooking.domain.login.service;
+package uth.edu.podbooking.domain.auth.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import uth.edu.podbooking.domain.account.entity.Account;
 import uth.edu.podbooking.domain.account.repository.AccountRepository;
-import uth.edu.podbooking.domain.login.dto.LoginRequest;
-import uth.edu.podbooking.domain.login.dto.LoginRespone;
-import uth.edu.podbooking.domain.login.mapper.LoginMapper;
+import uth.edu.podbooking.domain.auth.dto.request.LoginRequest;
+import uth.edu.podbooking.domain.auth.mapper.LoginMapper;
 
 import java.util.Optional;
 

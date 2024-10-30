@@ -1,9 +1,9 @@
-package uth.edu.podbooking.domain.login.mapper;
+package uth.edu.podbooking.domain.auth.mapper;
 
 import org.mapstruct.Mapper;
 import uth.edu.podbooking.domain.account.entity.Account;
-import uth.edu.podbooking.domain.login.dto.LoginRequest;
-import uth.edu.podbooking.domain.login.dto.LoginRespone;
+import uth.edu.podbooking.domain.auth.dto.request.LoginRequest;
+import uth.edu.podbooking.domain.auth.dto.respone.LoginRespone;
 
 
 @Mapper(componentModel = "spring")

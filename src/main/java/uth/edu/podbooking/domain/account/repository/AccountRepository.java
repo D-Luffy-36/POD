@@ -9,6 +9,8 @@ import java.util.Optional;
 public interface AccountRepository extends JpaRepository<Account, Long> {
     @Override
     List<Account> findAll();
+    @Override
     Optional<Account> findById(Long id);
     Optional<Account> findByEmail(String email);
+    Optional<Account> findAccountByEmailAndIsActive(String email, boolean isActive);
 }

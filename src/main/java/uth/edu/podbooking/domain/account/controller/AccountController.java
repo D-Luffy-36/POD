@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import uth.edu.podbooking.common.Response;
 import uth.edu.podbooking.domain.account.dto.AccountRequest;
 import uth.edu.podbooking.domain.account.dto.AccountResponse;
 import uth.edu.podbooking.domain.account.entity.Account;
@@ -24,48 +24,62 @@ public class AccountController {
     private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     @GetMapping("/accounts")
-    public List<AccountResponse> listAccounts(){
+    public Response<List<AccountResponse>> listAccounts(){
         List<AccountResponse> accountResponses = this.accountService.fetchAllAccounts();
-        return accountResponses;
+        Response<List<AccountResponse>> response = new Response<>();
+        response.setResult(accountResponses);
+        return response;
     }
 
     @GetMapping("/accounts/{id}")
-    public AccountResponse detail(@PathVariable Long id){
+    public Response<AccountResponse> detail(@PathVariable Long id){
         Optional<AccountResponse> accountResponse = this.accountService.fetchAccountById(id);
-        System.out.println(accountResponse);
+        Response<AccountResponse> response = new Response<>();
+
         if (accountResponse.isEmpty()){
             String message = "Account with id " + id + " not found";
-            return new AccountResponse(message);
+            response.setMessage(message);
+        }else {
+            response.setResult(accountResponse.get());
         }
-        return accountResponse.get();
+        return response;
     }
 
     @PostMapping("/accounts")
-    public ResponseEntity<AccountResponse> create(@RequestBody AccountRequest request) {
+    public Response<ResponseEntity<AccountResponse>> create(@RequestBody AccountRequest request) {
         Optional<AccountResponse> accountResponse = this.accountService.createAccount(request);
-
+        Response<ResponseEntity<AccountResponse>> response = new Response<>();
         if (accountResponse.isEmpty()){
             String message = "Account with email " + request.getEmail() + " was existed";
-            return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(new AccountResponse(message));
+            response.setMessage(message);
+            return response;
         }
-
-        return ResponseEntity.ok(accountResponse.get());
+        return response;
     }
 
     @PatchMapping("/accounts/{id}")
-    public AccountResponse update(@PathVariable Long id, @RequestBody Account account) {
+    public Response<AccountResponse> update(@PathVariable Long id, @RequestBody Account account) {
         Optional<AccountResponse> accountResponse = this.accountService.updateAccount(id , account);
-        logger.info(accountResponse.toString());
-        return accountResponse.get();
+        Response<AccountResponse> response = new Response<>();
+        if (accountResponse.isEmpty()){
+            String message = "Account with id " + id + " not found";
+            response.setMessage(message);
+            return response;
+        }
+        response.setResult(accountResponse.get());
+        return response;
     }
 
     @DeleteMapping("/accounts/{id}")
-    public AccountResponse delete(@PathVariable Long id) {
+    public Response<AccountResponse> delete(@PathVariable Long id) {
         Optional<AccountResponse> accountResponse = this.accountService.softDeleteAccount(id);
+        Response<AccountResponse> response = new Response<>();
         if (accountResponse.isEmpty()){
             String message = "Account with id " + id + " not found";
-            return new AccountResponse(message);
+            response.setMessage(message);
+            return response;
         }
-        return accountResponse.get();
+        response.setResult(accountResponse.get());
+        return response;
     }
 }
