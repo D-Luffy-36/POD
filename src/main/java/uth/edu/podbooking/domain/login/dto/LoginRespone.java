@@ -9,8 +9,4 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LoginRespone {
     boolean authenticated;
-    String message;
-    LoginRespone(String message) {
-        this.message = message;
-    }
 }
