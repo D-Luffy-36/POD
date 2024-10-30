@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import uth.edu.podbooking.domain.account.dto.AccountRequest;
 import uth.edu.podbooking.domain.account.dto.AccountResponse;
@@ -17,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-@Controller
+@RestController
 @Data
 @AllArgsConstructor
 public class AccountController {
@@ -25,20 +24,20 @@ public class AccountController {
     private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     @GetMapping("/accounts")
-    public ResponseEntity<List<AccountResponse>> listAccounts(){
+    public List<AccountResponse> listAccounts(){
         List<AccountResponse> accountResponses = this.accountService.fetchAllAccounts();
-        return ResponseEntity.ok(accountResponses);
+        return accountResponses;
     }
 
     @GetMapping("/accounts/{id}")
-    public ResponseEntity<AccountResponse> create(@PathVariable Long id){
+    public AccountResponse detail(@PathVariable Long id){
         Optional<AccountResponse> accountResponse = this.accountService.fetchAccountById(id);
         System.out.println(accountResponse);
         if (accountResponse.isEmpty()){
             String message = "Account with id " + id + " not found";
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new AccountResponse(message));
+            return new AccountResponse(message);
         }
-        return ResponseEntity.ok(accountResponse.get());
+        return accountResponse.get();
     }
 
     @PostMapping("/accounts")
@@ -54,21 +53,19 @@ public class AccountController {
     }
 
     @PatchMapping("/accounts/{id}")
-    public ResponseEntity<AccountResponse> update(@PathVariable Long id, @RequestBody Account account) {
+    public AccountResponse update(@PathVariable Long id, @RequestBody Account account) {
         Optional<AccountResponse> accountResponse = this.accountService.updateAccount(id , account);
         logger.info(accountResponse.toString());
-        return ResponseEntity.ok(accountResponse.get());
+        return accountResponse.get();
     }
 
     @DeleteMapping("/accounts/{id}")
-    public ResponseEntity<AccountResponse> delete(@PathVariable Long id) {
+    public AccountResponse delete(@PathVariable Long id) {
         Optional<AccountResponse> accountResponse = this.accountService.softDeleteAccount(id);
         if (accountResponse.isEmpty()){
             String message = "Account with id " + id + " not found";
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new AccountResponse(message));
+            return new AccountResponse(message);
         }
-        return ResponseEntity.ok(accountResponse.get());
+        return accountResponse.get();
     }
-
-
 }

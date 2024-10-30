@@ -1,9 +1,8 @@
 package uth.edu.podbooking.domain.account.mapper;
 
-
 import org.mapstruct.Mapper;
 
-import org.mapstruct.Mapping;
+
 import uth.edu.podbooking.domain.account.dto.AccountRequest;
 import uth.edu.podbooking.domain.account.dto.AccountResponse;
 import uth.edu.podbooking.domain.account.entity.Account;
