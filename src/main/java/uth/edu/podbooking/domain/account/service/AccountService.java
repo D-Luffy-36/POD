@@ -3,6 +3,7 @@ package uth.edu.podbooking.domain.account.service;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import uth.edu.podbooking.domain.account.dto.AccountRequest;
 import uth.edu.podbooking.domain.account.dto.AccountResponse;
@@ -19,6 +20,8 @@ import java.util.Optional;
 public class AccountService {
     private final AccountRepository accountRepository;
     private final AccountMapper accountMapper;
+    private final PasswordEncoder passwordEncoder;
+
 
     public List<AccountResponse> fetchAllAccounts() {
         List<Account> accounts =  this.accountRepository.findAll();
@@ -51,15 +54,18 @@ public class AccountService {
         if(fetchAccountByEmail(accountRequest.getEmail()).isPresent()){
             return Optional.empty();
         }
+
         Account account;
         AccountResponse accountResponse;
 
         if(accountRequest.getPassword().equals(accountRequest.getConfirmPassword())){
             account = accountMapper.toAccount(accountRequest);
-            Date date =new Date();
+            Date date = new Date();
             account.setCreated(date);
             account.setUpdated(date);
             account.setIsActive(true);
+            String encodedPassword = passwordEncoder.encode(accountRequest.getPassword());
+            account.setPassword(encodedPassword);
             accountResponse = accountMapper.toAccountResponse(accountRepository.save(account));
             return Optional.of(accountResponse);
         }

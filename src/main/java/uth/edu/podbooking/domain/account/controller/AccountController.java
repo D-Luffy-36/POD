@@ -33,6 +33,7 @@ public class AccountController {
     @GetMapping("/accounts/{id}")
     public ResponseEntity<AccountResponse> create(@PathVariable Long id){
         Optional<AccountResponse> accountResponse = this.accountService.fetchAccountById(id);
+        System.out.println(accountResponse);
         if (accountResponse.isEmpty()){
             String message = "Account with id " + id + " not found";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new AccountResponse(message));
@@ -42,14 +43,14 @@ public class AccountController {
 
     @PostMapping("/accounts")
     public ResponseEntity<AccountResponse> create(@RequestBody AccountRequest request) {
-        System.out.println(request);
         Optional<AccountResponse> accountResponse = this.accountService.createAccount(request);
 
         if (accountResponse.isEmpty()){
             String message = "Account with email " + request.getEmail() + " was existed";
             return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(new AccountResponse(message));
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(accountResponse.get());
+
+        return ResponseEntity.ok(accountResponse.get());
     }
 
     @PatchMapping("/accounts/{id}")
@@ -68,8 +69,6 @@ public class AccountController {
         }
         return ResponseEntity.ok(accountResponse.get());
     }
-
-
 
 
 }

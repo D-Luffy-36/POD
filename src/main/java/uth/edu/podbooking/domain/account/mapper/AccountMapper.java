@@ -14,7 +14,8 @@ import java.util.List;
 public interface AccountMapper {
 
   Account toAccount(AccountRequest accountRequest);
-  @Mapping(source = "isActive", target = "active")
+//  @Mapping(source = "isActive", target = "active")
   AccountResponse toAccountResponse(Account account);
+
   List<AccountResponse> toAccountResponseList(List<Account> accounts);
 }
