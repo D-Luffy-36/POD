@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import uth.edu.podbooking.common.Response;
+import uth.edu.podbooking.domain.auth.dto.request.AuthTokenRequest;
 import uth.edu.podbooking.domain.auth.dto.request.LoginRequest;
-import uth.edu.podbooking.domain.auth.dto.respone.LoginRespone;
+import uth.edu.podbooking.domain.auth.dto.respone.AuthTokenResponse;
+import uth.edu.podbooking.domain.auth.dto.respone.LoginResponse;
 import uth.edu.podbooking.domain.auth.service.LoginService;
 
 @RestController
@@ -15,14 +17,23 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("/login")
-    public Response<LoginRespone> login(@RequestBody LoginRequest loginRequest) {
-        boolean auth = this.loginService.auth(loginRequest);
-        LoginRespone loginRespone = new LoginRespone(auth);
-
-        loginRespone.setAuthenticated(auth);
-
-        Response<LoginRespone> response = new Response<>();
-        response.setResult(loginRespone);
-        return response;
+    public Response<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+        LoginResponse auth = this.loginService.auth(loginRequest);
+        return Response.<LoginResponse>builder()
+                .result(auth)
+                .build();
     }
+
+    @PostMapping("/token")
+    public Response<AuthTokenResponse> authToken(@RequestBody AuthTokenRequest authTokenRequest) {
+        AuthTokenResponse authTokenResponse = this.loginService.checkToken(authTokenRequest);
+
+        return Response.<AuthTokenResponse>builder() // Sửa thành AuthTokenResponse
+                .result(authTokenResponse)
+                .build();
+    }
+
+
+
+
 }
