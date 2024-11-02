@@ -38,5 +38,6 @@ public class Account {
 
     private Date updated;
     // vip_id
+
     // location_id
 }

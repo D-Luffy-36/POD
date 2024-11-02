@@ -28,7 +28,7 @@ public class LoginController {
     public Response<AuthTokenResponse> authToken(@RequestBody AuthTokenRequest authTokenRequest) {
         AuthTokenResponse authTokenResponse = this.loginService.checkToken(authTokenRequest);
 
-        return Response.<AuthTokenResponse>builder() // Sửa thành AuthTokenResponse
+        return Response.<AuthTokenResponse>builder()
                 .result(authTokenResponse)
                 .build();
     }

@@ -54,7 +54,6 @@ public class LoginService {
         }
 
         Optional<String> token = generateToken(loginRequest.getEmail());
-
         return new LoginResponse(true, token.get());
     }
 
@@ -74,10 +73,14 @@ public class LoginService {
                 .build();
 
         // Tạo SignedJWT và ký token
+
         SignedJWT signedJWT = new SignedJWT(header, claims);
         byte[] sharedSecret = secret.getBytes(StandardCharsets.UTF_8);
+
         try {
+            // 1 instance để kí
             JWSSigner signer = new MACSigner(sharedSecret);
+
             signedJWT.sign(signer);
         } catch (JOSEException e) {
             logger.error(e.getMessage());
@@ -98,28 +101,41 @@ public class LoginService {
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
-
             // Xác thực token
             if (signedJWT.verify(verifier)) {
-                // Token hợp lệ,có thể lấy các thông tin claims
                 try {
-                    String subject = signedJWT.getJWTClaimsSet().getSubject();
+                    JWTClaimsSet claimsSet = signedJWT.getJWTClaimsSet();
+
+                    // Lấy thời gian hiện tại
+                    Date now = new Date();
+
+                    // Lấy thời gian hết hạn từ claim 'exp'
+                    Date expirationTime = claimsSet.getExpirationTime();
+
+                    // không có time or expirationTime < now => het han
+                    if (expirationTime != null && expirationTime.before(now)) {
+                        // Token đã hết hạn
+                        return new AuthTokenResponse(false);
+                    }
+
+                    // Token hợp lệ và chưa hết hạn
+                    String subject = claimsSet.getSubject();
+
+                    // Tạo và trả về phản hồi
+                    return new AuthTokenResponse(true);
+
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
-                // Tạo và trả về phản hồi
-                return new AuthTokenResponse(true);
             } else {
                 // Token không hợp lệ
                 return new AuthTokenResponse(false);
             }
         } catch (JOSEException e) {
             throw new RuntimeException(e);
-
         }
 
     }
-
 
 }
 
