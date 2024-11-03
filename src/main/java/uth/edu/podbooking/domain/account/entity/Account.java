@@ -1,13 +1,15 @@
 package uth.edu.podbooking.domain.account.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import uth.edu.podbooking.domain.location.entity.Location;
+
 import java.util.Date;
+import java.util.Set;
 
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -40,4 +42,18 @@ public class Account {
     // vip_id
 
     // location_id
+    @OneToOne()
+    @JoinColumn(name = "location_id")
+    private Location location;
+
+    // role
+    @ManyToMany()
+    @JoinTable(
+            name = "account_role",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles;
+
+
 }

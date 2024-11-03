@@ -1,9 +1,12 @@
-package uth.edu.podbooking.domain.account.dto;
+package uth.edu.podbooking.domain.account.dto.respone;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uth.edu.podbooking.domain.account.entity.Role;
+
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -15,6 +18,7 @@ public class AccountResponse {
     private String phone;
     private String errorMessage;
     private Boolean isActive;
+    private Set<Role> role;
 
     public AccountResponse(String errorMessage) {
         this.errorMessage = errorMessage; // Đặt thông báo lỗi

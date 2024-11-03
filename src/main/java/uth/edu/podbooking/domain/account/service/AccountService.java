@@ -5,8 +5,8 @@ import lombok.Data;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import uth.edu.podbooking.domain.account.dto.AccountRequest;
-import uth.edu.podbooking.domain.account.dto.AccountResponse;
+import uth.edu.podbooking.domain.account.dto.request.AccountRequest;
+import uth.edu.podbooking.domain.account.dto.respone.AccountResponse;
 import uth.edu.podbooking.domain.account.entity.Account;
 import uth.edu.podbooking.domain.account.mapper.AccountMapper;
 import uth.edu.podbooking.domain.account.repository.AccountRepository;

@@ -1,4 +1,4 @@
-package uth.edu.podbooking.domain.account.dto;
+package uth.edu.podbooking.domain.account.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;

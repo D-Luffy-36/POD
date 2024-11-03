@@ -3,8 +3,8 @@ package uth.edu.podbooking.domain.account.mapper;
 import org.mapstruct.Mapper;
 
 
-import uth.edu.podbooking.domain.account.dto.AccountRequest;
-import uth.edu.podbooking.domain.account.dto.AccountResponse;
+import uth.edu.podbooking.domain.account.dto.request.AccountRequest;
+import uth.edu.podbooking.domain.account.dto.respone.AccountResponse;
 import uth.edu.podbooking.domain.account.entity.Account;
 
 import java.util.List;
