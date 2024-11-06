@@ -1,4 +1,4 @@
-package uth.edu.podbooking.domain.account.dto.respone;
+package uth.edu.podbooking.domain.account.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -16,9 +16,9 @@ public class AccountResponse {
     private String fullName;
     private String email;
     private String phone;
-    private String errorMessage;
+    private String errorMessage; // bị thừa
     private Boolean isActive;
-    private Set<Role> role;
+    private Set<RoleResponse> roles;
 
     public AccountResponse(String errorMessage) {
         this.errorMessage = errorMessage; // Đặt thông báo lỗi
