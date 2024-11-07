@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uth.edu.podbooking.domain.account.entity.Role;
+import uth.edu.podbooking.domain.location.dto.LocationResponse;
 
+
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Data
@@ -18,6 +20,8 @@ public class AccountResponse {
     private String phone;
     private String errorMessage; // bị thừa
     private Boolean isActive;
+    private double points;
+    private LocationResponse location;
     private Set<RoleResponse> roles;
 
     public AccountResponse(String errorMessage) {

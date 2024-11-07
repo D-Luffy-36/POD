@@ -31,13 +31,9 @@ public class Account {
     @Column(nullable = false)
     private String password;
     private String img;
-
     private double points;
-
     private Boolean isActive;
-
     private Date created;
-
     private Date updated;
     // vip_id
 
@@ -54,6 +50,5 @@ public class Account {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles;
-
 
 }

@@ -30,16 +30,19 @@ public class PermissionController {
     @PostMapping()
     public Response<PermissionResponse> create(@RequestBody PermissionRequest permissionRequest) {
         Optional<PermissionResponse> permissionResponse = this.permissionService.creatPermission(permissionRequest);
-        if(permissionResponse.isEmpty()) {
-            return Response
-                    .<PermissionResponse>builder()
-                    .message(permissionRequest.getCode() + "has existed!")
-                    .build();
-        }
-        return Response
+
+        return permissionResponse.isEmpty()
+                ?
+                Response
+                .<PermissionResponse>builder()
+                .message(permissionRequest.getCode() + " has existed!")
+                .build()
+                :
+                Response
                 .<PermissionResponse>builder()
                 .result(permissionResponse.get())
                 .build();
+
     }
 }
 

@@ -15,10 +15,10 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String name;
     private String address;
     private String city;
+    private String country;
     private String phone;
 
 }

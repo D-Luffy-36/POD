@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import uth.edu.podbooking.common.Response;
 import uth.edu.podbooking.domain.account.dto.request.AccountRequest;
 import uth.edu.podbooking.domain.account.dto.response.AccountResponse;
-import uth.edu.podbooking.domain.account.entity.Account;
+
 import uth.edu.podbooking.domain.account.service.AccountService;
-import uth.edu.podbooking.domain.account.service.RoleService;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,10 +25,6 @@ public class AccountController {
     private final AccountService accountService;
     private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 
-//    return Response
-//            .<List<PermissionResponse>>builder()
-//                .result(this.permissionService.fetAllPermissions())
-//            .build();
 
     @GetMapping()
     public Response<List<AccountResponse>> listAccounts(){
@@ -42,6 +37,7 @@ public class AccountController {
     @GetMapping("/{id}")
     public Response<AccountResponse> detail(@PathVariable Long id){
         Optional<AccountResponse> accountResponse = this.accountService.fetchAccountById(id);
+
         Response<AccountResponse> response = new Response<>();
 
         if (accountResponse.isEmpty()){
@@ -66,16 +62,18 @@ public class AccountController {
     }
 
     @PatchMapping("/{id}")
-    public Response<AccountResponse> update(@PathVariable Long id, @RequestBody Account account) {
-        Optional<AccountResponse> accountResponse = this.accountService.updateAccount(id , account);
-        Response<AccountResponse> response = new Response<>();
-        if (accountResponse.isEmpty()){
-            String message = "Account with id " + id + " not found";
-            response.setMessage(message);
-            return response;
-        }
-        response.setResult(accountResponse.get());
-        return response;
+    public Response<AccountResponse> update(@PathVariable Long id, @RequestBody AccountRequest accountRequest) {
+        Optional<AccountResponse> accountResponse = this.accountService.updateAccount(id, accountRequest);
+
+        return  accountResponse.isEmpty()
+                ?
+                Response.<AccountResponse>builder()
+                    .message("Account with id " + id + " not found")
+                    .build()
+                :
+                Response.<AccountResponse>builder()
+                        .result(accountResponse.get())
+                        .build();
     }
 
     @DeleteMapping("/{id}")

@@ -16,7 +16,5 @@ public interface AccountMapper {
 
   AccountResponse toAccountResponse(Account account);
 
-
-
   List<AccountResponse> toAccountResponseList(List<Account> accounts);
 }

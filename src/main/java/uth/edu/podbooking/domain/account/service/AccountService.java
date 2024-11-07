@@ -9,7 +9,8 @@ import uth.edu.podbooking.domain.account.dto.response.AccountResponse;
 import uth.edu.podbooking.domain.account.entity.Account;
 import uth.edu.podbooking.domain.account.mapper.AccountMapper;
 import uth.edu.podbooking.domain.account.repository.AccountRepository;
-import uth.edu.podbooking.domain.account.repository.RoleReppository;
+import uth.edu.podbooking.domain.location.entity.Location;
+import uth.edu.podbooking.domain.location.mapper.LocationMapper;
 
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class AccountService {
     private final AccountRepository accountRepository;
     private final AccountMapper accountMapper;
+    private final LocationMapper locationMapper;
     private final PasswordEncoder passwordEncoder;
 
 
@@ -76,19 +78,24 @@ public class AccountService {
         return Optional.empty();
     }
 
-    public Optional<AccountResponse> updateAccount(Long id, Account account) {
-        Optional<Account> accountOptional = this.accountRepository.findById(id);
-        if (accountOptional.isEmpty()) {
+    public Optional<AccountResponse> updateAccount(Long id, AccountRequest accountRequest) {
+        Optional<Account> currentAccount = this.accountRepository.findById(id);
+        Location newLocation = locationMapper.toLocation(accountRequest.getLocation());
+        if(currentAccount.isEmpty()){
             return Optional.empty();
         }
-        accountOptional.get().setFirstName(account.getFirstName());
-        accountOptional.get().setLastName(account.getLastName());
-        accountOptional.get().setFullName(account.getFirstName() + " " + account.getLastName());
-        accountOptional.get().setPhone(account.getPhone());
-        accountOptional.get().setEmail(account.getEmail());
-        accountOptional.get().setIsActive(account.getIsActive());
-        accountOptional.get().setUpdated(new Date());
-        return Optional.of(accountMapper.toAccountResponse(accountRepository.save(accountOptional.get())));
+        currentAccount.get().setEmail(accountRequest.getEmail());
+        currentAccount.get().setFirstName(accountRequest.getFirstName());
+        currentAccount.get().setLastName(accountRequest.getLastName());
+        currentAccount.get().setPassword(accountRequest.getPassword());
+        currentAccount.get().setIsActive(accountRequest.getIsActive());
+        currentAccount.get().setFullName(accountRequest.getFirstName() + " " + accountRequest.getLastName());
+        currentAccount.get().setPhone(accountRequest.getPhone());
+        currentAccount.get().setLocation(newLocation);
+
+        return Optional.of(
+                accountMapper.toAccountResponse(currentAccount.get())
+        );
     }
 
     public Optional<AccountResponse> softDeleteAccount(Long id) {
