@@ -1,0 +1,43 @@
+.detail{
+    width: 80%;
+   position: relative;
+   left: 10%;
+   top: 50px;
+   font-size: 25px;
+   
+}
+.img-slide{
+    height: 700px;
+    width: 1000px;
+    position: relative;
+    top: 55px;
+    left: 250px;
+    border-radius: 3px;
+}
+.detail2{
+    width: 80%;
+   position: relative;
+   left: 10%;
+   top: 90px;
+   font-size: 25px;
+   font-family: "Asap", sans-serif;
+}
+.container{
+    min-height: 2000px;
+}
+
+.img-slide2{
+    height: 700px;
+    width: 1000px;
+    position: relative;
+    top: 130px;
+    left: 250px;
+    border-radius: 3px;
+}
+.end{
+    width: 80%;
+   position: relative;
+   left: 10%;
+   top: 200px;
+   font-size: 25px;
+}

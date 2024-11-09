@@ -1,0 +1,218 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 0px 1fr; /* Chia thành 3 cột: 2 cột nội dung và 1 cột cho đường kẻ */
+    grid-gap: 10px; /* Khoảng cách giữa các cột */
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+}
+  
+.column1 {
+    /* Styles for columns */
+    background-color: none; 
+    height: 100vh;
+    width: 50vw;
+}
+  
+.divider {
+    background-color: black; /* Màu của đường kẻ */
+    width: 2px; /* Độ dày của đường kẻ */
+}
+.column2{
+    background-color: none;
+    width: 50vw;
+}
+h2 {
+    margin: 10px 40px;
+    text-transform: uppercase;
+    color: brown;
+    font-size: 40px;
+}
+a{
+    text-decoration: none;
+    color: brown;
+}
+p {
+    margin: 10px 40px;
+}
+input {
+    padding: 0.45em;
+}
+#hoten, #address {
+    margin: 10px 40px;
+    box-shadow: 0 0 0 1px #d9d9d9;
+    transition: all 0.2s ease-out;
+    background-color: white;
+    color: #333333;
+    border-radius: 4px;
+    display: block;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 0.94em 2.8em 0.94em 0.8em;
+    word-break: normal;
+}
+#sdt {
+    margin: 10px 40px;
+    box-shadow: 0 0 0 1px #d9d9d9;
+    transition: all 0.2s ease-out;
+    background-color: white;
+    color: #333333;
+    border-radius: 4px;
+    display: block;
+    box-sizing: border-box;
+    width: 20%;
+    padding: 0.94em 2.8em 0.94em 0.8em;
+    word-break: normal;
+}
+#email {
+    margin: 10px 40px;
+    box-shadow: 0 0 0 1px #d9d9d9;
+    transition: all 0.2s ease-out;
+    background-color: white;
+    color: #333333;
+    border-radius: 4px;
+    display: block;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 0.94em 2.8em 0.94em 0.8em;
+    word-break: normal;
+}
+.diachi {
+    display: inline-block;
+    width: 22%;
+    margin: 10px 40px;
+    box-shadow: 0 0 0 1px #d9d9d9;
+    transition: all 0.2s ease-out;
+    background-color: white;    
+    color: #333333;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 0.94em 2.8em 0.94em 0.8em;
+    word-break: normal;
+}
+.tinh, .huyen, .xa {
+    margin: 10px 40px;
+}
+.xa select {
+    margin-left: 50px;
+}
+#vanchuyen {
+    margin: 10px 40px;
+    box-shadow: 0 0 0 1px #d9d9d9;
+    transition: all 0.2s ease-out;
+    background-color: white;
+    color: #333333;
+    border-radius: 4px;
+    display: block;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 0.94em 2.8em 0.94em 0.8em;
+    word-break: normal;
+
+}
+.cart-box {
+    display: grid;
+    grid-template-columns: 30% 80%;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.3rem;
+}
+.border {
+    border-bottom: 1px solid black;
+    width: 515px;
+    margin: 10px 40px;
+}
+.cart-img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    padding: 10px;
+}
+.detail-box {
+    display: grid;
+    row-gap: 0.5rem;
+}
+.cart-product-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+.cart-price{
+    font-weight: 500;
+}
+.cart-quantity{
+    border: 1px solid black;
+    width: 30px;
+    text-align: center; 
+    font-size: 1rem;
+}
+.discount {
+    margin: 10px 40px;
+    display: flex;
+}
+#code {
+    padding: 0.45em;
+    box-shadow: 0 0 0 1px #d9d9d9;
+    transition: all 0.2s ease-out;
+    background-color: white;
+    color: #333333;
+    border-radius: 4px; 
+    display: block;
+    box-sizing: border-box;
+    width: 60%;
+    padding: 0.94em 2.8em 0.94em 0.8em;
+    word-break: normal; 
+}
+#use {
+    box-shadow: 0 0 0 1px #d9d9d9;
+    transition: all 0.2s ease-out;
+    background-color: white;
+    color: #333333;
+    border-radius: 4px; 
+    display: block;
+    box-sizing: border-box;
+    width: 15%;
+    padding: 0.94em 2.8em 0.94em 0.8em;
+    word-break: normal; 
+    cursor: pointer;
+}
+#use:hover {
+    background-color: aqua;
+}
+.calculate, .ship {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 40px;
+}
+.calculate-price {
+    margin-right: 180px;
+}
+.shipping-price {
+    margin-right: 180px;
+}
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 40px;
+}
+.total .total-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+.total-price{
+    margin-right: 180px;
+}
+.dat-hang .dat {
+    margin-left: 300px;
+    box-shadow: 0 0 0 1px #d9d9d9;;  
+    background-color: white;
+    color: #333333;
+    border-radius: 4px; 
+    box-sizing: border-box;
+    width: 15%;
+    word-break: normal; 
+    cursor: pointer;
+    height: 50px;
+}
+.dat-hang .dat:hover{
+    background-color: yellow;
+}

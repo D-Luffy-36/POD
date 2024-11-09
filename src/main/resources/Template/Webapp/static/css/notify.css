@@ -1,0 +1,98 @@
+/* Mặc định ẩn phần thông báo */
+.header__notify {
+    height: 300px;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background-color: azure;
+    border: 1px solid #d3d3d3;
+    width: 404px;
+    border-radius: 2px;
+    animation: headerNotifyGrowth ease-in 0.25s;
+    transform-origin: calc(100% - 10px) top;
+    display: none; 
+}
+
+.header__notify::before{
+    content: "";
+    border: 20px solid;
+    border-color: transparent transparent azure transparent;
+    position: absolute;
+    top: -27px;
+    right: 5px;
+}
+
+/* Khi hover vào icon, hiện thông báo */
+.action__notify:hover + .header__notify,
+.header__notify:hover {
+    display: block;
+}
+
+.header__notify a:hover {
+    text-decoration: none;
+}
+
+.header__notify-header {
+    height: 40px;
+}
+
+.header__notify-header h3 {
+    position: relative;
+    top: 10px;
+    color: #808080;
+    font-size: 20px;
+    font-family: "Asap", sans-serif;
+}
+
+.header__notify-img {
+    width: 60px;
+    height: 60px;
+}
+
+.header__notify-link {
+    display: flex;
+}
+
+.header__notify-name {
+    font-family: "Asap", sans-serif;
+    font-size: 20px;
+}
+
+.header__notify-description {
+    font-family: "Asap", sans-serif;
+    font-size: 15px;
+}
+
+.link-notify {
+    text-decoration: none;
+}
+
+.link-notify:hover .header__notify-info {
+    background-color: rgba(238, 75, 43, 0.08);
+    color: black;
+}
+
+.header__notify-info {
+    padding-left: 5px;
+}
+
+.header__notify-item {
+    padding-bottom: 9px;
+}
+
+@keyframes headerNotifyGrowth {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.seeall{
+    position: relative;
+    top: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

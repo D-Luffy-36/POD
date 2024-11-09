@@ -1,0 +1,175 @@
+/* Đặt font chữ mặc định */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-size: 32px;
+}
+
+/* Đặt container chính để điều chỉnh khoảng cách */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Thiết lập cho bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center; /* Căn giữa nội dung trong thẻ th và td */
+    border-bottom: 1px solid #ddd;
+}
+
+/* Flexbox và Grid để chia cột thích ứng */
+thead tr, tbody tr {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Chia đều thành 4 cột */
+}
+tbody tr {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Chia đều thành 4 cột */
+    background-color: #fafafa;
+}
+
+
+tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+/* Hiệu ứng hover cho hàng */
+tbody tr:hover {
+    background-color: #eaeaea;
+}
+
+a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+    thead tr, tbody tr {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #fafafa;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f1f1f1;
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #333;
+    }
+}
+
+.back-button-container {
+    margin-top: 20px; /* Tạo khoảng cách phía trên nút */
+    text-align: center; /* Căn giữa nút */
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #2980b9;
+}
+.confirm-button {
+    background-color: #3498db; /* Màu xanh cho nút xác nhận */
+}
+
+.confirm-button:hover {
+    background-color: #2980b9; /* Màu xanh đậm hơn khi hover */
+}
+
+.deliver-button {
+    background-color: #e67e22; /* Màu cam cho nút giao hàng */
+}
+
+.deliver-button:hover {
+    background-color: #d35400; /* Màu cam đậm hơn khi hover */
+}
+
+.complete-button {
+    background-color: #2ecc71; /* Màu xanh lá cho nút giao hàng thành công */
+}
+
+.complete-button:hover {
+    background-color: #27ae60; /* Màu xanh lá đậm hơn khi hover */
+}

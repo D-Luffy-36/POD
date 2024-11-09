@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input, select, textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #333; /* Màu chữ */
+    font-weight: bold;
+    padding: 10px; /* Khoảng cách xung quanh chữ */
+    border-radius: 5px; /* Làm tròn góc */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
+  }
+.back {
+    margin: 10px;
+    top: 10px;
+    font-size: 1.5rem;
+}
