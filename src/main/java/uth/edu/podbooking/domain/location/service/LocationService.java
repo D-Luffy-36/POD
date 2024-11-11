@@ -22,10 +22,10 @@ public class LocationService {
                 .toList();
     }
 
-
+    // lay ra duoc danh sach vị trí có name:  workspace
     public List<LocationResponse> fetchAllWorkspaceLocations() {
         return this.locationRepository
-                .findLocationsByName("WorkFlow").stream()
+                .findLocationsByName("WorkSpace Flow").stream()
                 .map(locationMapper::toLocationResponse)
                 .toList();
     }

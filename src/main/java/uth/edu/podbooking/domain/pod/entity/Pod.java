@@ -4,6 +4,8 @@ package uth.edu.podbooking.domain.pod.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import uth.edu.podbooking.domain.workspace.dto.WorkSpaceResponse;
+import uth.edu.podbooking.domain.workspace.entity.WorkSpace;
 
 import java.util.Set;
 
@@ -36,4 +38,13 @@ public class Pod {
             joinColumns = @JoinColumn(name = "pod_id"),
             inverseJoinColumns = @JoinColumn(name = "anmenity_id"))
     Set<Amenity> amenities;
+
+    @ManyToMany
+    @JoinTable(
+            name = "workspace_pod",
+            joinColumns = @JoinColumn(name = "pod_id"),
+            inverseJoinColumns = @JoinColumn(name = "workspace_id"))
+    Set<WorkSpace> workspaces;
+
+
 }
