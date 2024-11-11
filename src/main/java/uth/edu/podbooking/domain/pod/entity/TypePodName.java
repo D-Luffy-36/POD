@@ -1,5 +1,8 @@
 package uth.edu.podbooking.domain.pod.entity;
 
+import lombok.Getter;
+
+
 public enum TypePodName {
     SINGLE_WORKPOD,
     DOUBLE_WORKPOD,

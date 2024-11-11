@@ -64,12 +64,13 @@ public class LoginService {
         List<String> permissions = Arrays.asList("READ", "WRITE");
 
         // payload
+        // tìm Email => check Role + permission
         JWTClaimsSet claims = new JWTClaimsSet.Builder()
                 .subject(email)
                 .issuer("uth.edu.podbooking")
                 .expirationTime(expirationTime)// Thời gian hết hạn
                 .claim("permission", permissions.get(0))
-                .claim("role", "USER") // Claim vai trò
+                .claim("role", "ADMIN") // Claim vai trò
                 .build();
 
         // Tạo SignedJWT và ký token

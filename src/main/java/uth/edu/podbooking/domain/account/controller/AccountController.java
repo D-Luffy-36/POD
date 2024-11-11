@@ -28,7 +28,6 @@ public class AccountController {
 
     @GetMapping()
     public Response<List<AccountResponse>> listAccounts(){
-
         return Response.<List<AccountResponse>>builder()
                 .result(this.accountService.fetchAllAccounts())
                 .build();

@@ -16,6 +16,7 @@ public class TypePod {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @Column(unique = true, nullable = false)
     private TypePodName name;
 
     private int capacity;
