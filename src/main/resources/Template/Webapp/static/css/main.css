@@ -502,7 +502,6 @@ del{
 /* footer */
 footer{
     height: 200px;
-    width: 100vw;
     background-color: #acacac;
     position: relative;
     bottom: 0;
