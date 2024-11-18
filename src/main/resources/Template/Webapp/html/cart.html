@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đơn hàng của bạn</title>
+    <link rel="stylesheet" href="../static/css/orders.css" />
+</head>
+
+<body>
+    <div class="container">
+        
+                <h2>Mã đơn hàng:</h2>
+                <p>Người nhận:</p>
+                <p>Email: </p>
+                <p>Số điện thoại: </p>
+                <p>Địa chỉ: </p>
+                <p>Ngày đặt hàng:</p>
+                <p>Trạng thái đơn hàng: </p>
+                 <!-- Hiển thị nút "Hủy đơn hàng" -->
+                <form method='post' action=''>
+                <input type='hidden' name='idOrder' value='" . htmlspecialchars($idOrder) . "'>
+                <button type='submit' name='cancel_order' class='cancel-button' style='background-color:#C6E2FF; cursor: pointer;  border-radius: 50px; color:black; width:150px; height:45px; font-size: 16px;
+                font-weight: 600;'>Hủy đơn hàng</button>
+                </form>
+
+                 <!-- Xử lý khi nhấn nút "Hủy đơn hàng" -->
+            
+
+                <!-- // Truy vấn các sản phẩm trong đơn hàng         -->
+                
+                    <h3>Sản phẩm đã đặt:</h3>
+                        <div class='order-item'>
+                        <img  class='order-img' />
+                        <div class='order-details'>
+                        <p>Tên sản phẩm: </p>
+                        <p>Giá:  đ</p>
+                        <p>Số lượng:</p>
+                        <p>Tổng giá: đ</p>
+                        </div>
+                        </div>
+                    
+                
+          
+    </div>
+
+    <a href="../static/html/index.html" class="back-button">MUA HÀNG TIẾP</a>
+</body>
+
+</html>
