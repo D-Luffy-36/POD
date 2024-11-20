@@ -58,15 +58,6 @@
 
         <!-- call API Layout -->
         <div id="sidebar"></div>
-        <script>
-          // Load file sidebar.html
-          fetch('../layout/sidebar.html')
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('sidebar').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading sidebar:', error));
-        </script>
         <!-- / call API Layout -->
 
         <!-- Layout container -->
@@ -436,5 +427,8 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Call ServiceApi.js-->
+    <script src="../js/serviceApi.js"></script>
   </body>
 </html>
