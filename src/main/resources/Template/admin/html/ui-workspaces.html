@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Collapse - UI elements</title>
+    <title>Alerts - UI elements</title>
 
     <meta name="description" content="" />
 
@@ -181,142 +181,73 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI elements /</span> Collapse</h4>
-
-              <!-- Collapse -->
-              <h5>Collapse</h5>
-              <div class="row">
-                <div class="col-12">
-                  <div class="card mb-4">
-                    <h5 class="card-header">Basic</h5>
-                    <div class="card-body">
-                      <p class="card-text">
-                        Toggle the visibility of content across your project with a few classes and our JavaScript
-                        plugins.
-                      </p>
-                      <p class="demo-inline-spacing">
-                        <a
-                          class="btn btn-primary me-1"
-                          data-bs-toggle="collapse"
-                          href="#collapseExample"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="collapseExample"
-                        >
-                          Link with href
-                        </a>
-                        <button
-                          class="btn btn-primary me-1"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#collapseExample"
-                          aria-expanded="false"
-                          aria-controls="collapseExample"
-                        >
-                          Button with data-bs-target
-                        </button>
-                      </p>
-                      <div class="collapse" id="collapseExample">
-                        <div class="d-grid d-sm-flex p-3 border">
-                          <img
-                            src="../assets/img/elements/1.jpg"
-                            alt="collapse-image"
-                            height="125"
-                            class="me-4 mb-sm-0 mb-2"
-                          />
-                          <span>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.It is a long established fact that a reader will be distracted by
-                            the readable content of a page when looking at its layout. The point of using Lorem Ipsum is
-                            that it has a more-or-less normal distribution of letters.
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI elements /</span> Alerts</h4>
+              <div class="row mb-4">
+                <!-- Basic Alerts -->
+                <div class="col-md mb-4 mb-md-0">
                   <div class="card">
-                    <h5 class="card-header">Multiple targets</h5>
+                    <h5 class="card-header">Basic Alerts</h5>
                     <div class="card-body">
-                      <p class="card-text">Show and hide multiple elements by referencing them with a selector.</p>
+                      <div class="alert alert-primary" role="alert">This is a primary alert — check it out!</div>
 
-                      <p class="demo-inline-spacing">
-                        <a
-                          class="btn btn-primary me-1"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample1"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample1"
-                          >Toggle first element</a
-                        >
-                        <button
-                          class="btn btn-primary me-1"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#multiCollapseExample2"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample2"
-                        >
-                          Toggle second element
-                        </button>
-                        <button
-                          class="btn btn-primary me-1"
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target=".multi-collapse"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample1 multiCollapseExample2"
-                        >
-                          Toggle both elements
-                        </button>
-                      </p>
-                      <div class="row">
-                        <div class="col-12 col-md-6 mb-2 mb-md-0">
-                          <div class="collapse multi-collapse" id="multiCollapseExample1">
-                            <div class="d-grid d-sm-flex p-3 border">
-                              <img
-                                src="../assets/img/elements/2.jpg"
-                                alt="collapse-image"
-                                height="125"
-                                class="me-4 mb-sm-0 mb-2"
-                              />
-                              <span>
-                                All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as
-                                necessary, making this the first true generator on the Internet. It uses a dictionary of
-                                over 200 Latin words, combined with a handful of model sentence structures, to generate
-                                Lorem Ipsum which looks reasonable.
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <div class="collapse multi-collapse" id="multiCollapseExample2">
-                            <div class="d-grid d-sm-flex p-3 border">
-                              <img
-                                src="../assets/img/elements/3.jpg"
-                                alt="collapse-image"
-                                height="125"
-                                class="me-4 mb-sm-0 mb-2"
-                              />
-                              <span>
-                                There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable. If you are going to use a passage of Lorem Ipsum.
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+                      <div class="alert alert-secondary" role="alert">This is a secondary alert — check it out!</div>
+
+                      <div class="alert alert-success" role="alert">This is a success alert — check it out!</div>
+
+                      <div class="alert alert-danger" role="alert">This is a danger alert — check it out!</div>
+
+                      <div class="alert alert-warning" role="alert">This is a warning alert — check it out!</div>
+
+                      <div class="alert alert-info" role="alert">This is an info alert — check it out!</div>
+
+                      <div class="alert alert-dark mb-0" role="alert">This is a dark alert — check it out!</div>
+                    </div>
+                  </div>
+                </div>
+                <!--/ Basic Alerts -->
+                <!-- Dismissible Alerts -->
+                <div class="col-md">
+                  <div class="card">
+                    <h5 class="card-header">Dismissible Alerts</h5>
+                    <div class="card-body">
+                      <div class="alert alert-primary alert-dismissible" role="alert">
+                        This is a primary dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-secondary alert-dismissible" role="alert">
+                        This is a secondary dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-success alert-dismissible" role="alert">
+                        This is a success dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-danger alert-dismissible" role="alert">
+                        This is a danger dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-warning alert-dismissible" role="alert">
+                        This is a warning dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-info alert-dismissible" role="alert">
+                        This is an info dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+
+                      <div class="alert alert-dark alert-dismissible mb-0" role="alert">
+                        This is a dark dismissible alert — check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                       </div>
                     </div>
                   </div>
                 </div>
+                <!--/ Dismissible Alerts -->
               </div>
             </div>
             <!-- / Content -->
@@ -409,5 +340,8 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Call ServiceApi.js-->
+    <script src="../js/serviceApi.js"></script>
   </body>
 </html>
