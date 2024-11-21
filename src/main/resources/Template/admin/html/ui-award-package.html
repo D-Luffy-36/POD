@@ -15,7 +15,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dropdowns - UI elements</title>
+    <title>Award-Package - UI elements</title>
 
     <meta name="description" content="" />
 
@@ -58,130 +58,22 @@
 
         <!-- call API Layout -->
         <div id="sidebar"></div>
-        <script>
-          // Load file sidebar.html
-          fetch('../layout/sidebar.html')
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('sidebar').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading sidebar:', error));
-        </script>
         <!-- / call API Layout -->
 
 
         <!-- Layout container -->
         <div class="layout-page">
-          <!-- Navbar -->
-
-          <nav
-            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar"
-          >
-            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                <i class="bx bx-menu bx-sm"></i>
-              </a>
-            </div>
-
-            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <!-- Search -->
-              <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center">
-                  <i class="bx bx-search fs-4 lh-0"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Search..."
-                    aria-label="Search..."
-                  />
-                </div>
-              </div>
-              <!-- /Search -->
-
-              <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- Place this tag where you want the button to render. -->
-                <li class="bi bi-star me-2">
-                  <a
-                    class="btn btn-primary d-inline-flex align-items-center"
-                    href="http://127.0.0.1:5500/src/main/resources/Template/Webapp/html/index.html"
-                    role="button"
-                    aria-label="Go to index"
-                    target="_blank"
-                    >POD BOOKING</a>
-                </li>
-
-                <!-- User -->
-                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                      <img src="../assets/img/avatars/admin.jpg" alt class="w-px-40 h-auto rounded-circle" />
-                    </div>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <a class="dropdown-item" href="pages-account-settings-account.html">
-                        <div class="d-flex">
-                          <div class="flex-shrink-0 me-3">
-                            <div class="avatar avatar-online">
-                              <img src="../assets/img/avatars/admin.jpg" alt class="w-px-40 h-auto rounded-circle" />
-                            </div>
-                          </div>
-                          <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">POD</span>
-                            <small class="text-muted">Admin</small>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="pages-account-settings-account.html">
-                        <i class="bx bx-user me-2"></i>
-                        <span class="align-middle">Hồ sơ</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="pages-account-settings-account.html">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Cài đặt</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="http://127.0.0.1:5500/src/main/resources/Template/Webapp/html/datphong.html" target="_blank">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Thanh toán</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">N</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
-                        <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Đăng xuất</span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <!--/ User -->
-              </ul>
-            </div>
-          </nav>
-
-          <!-- / Navbar -->
+          
+          <!-- call Api Navbar -->
+          <div id="navbar"></div>
+          <!-- / call Api Navbar -->
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI elements /</span> Dropdowns</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">UI elements /</span> Award-Package</h4>
 
               <div class="card mb-4" id="btn-dropdown-demo">
                 <h5 class="card-header">Dropdowns</h5>
@@ -1174,62 +1066,9 @@
             </div>
             <!-- / Content -->
 
-            <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                <div class="mb-2 mb-md-0">
-                  ©
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  , made with ❤️ by
-                  <a href="http://127.0.0.1:5500/src/main/resources/Template/Webapp/html/index.html" target="_blank" class="footer-link fw-bolder">POD Booking</a> Team 🐱‍👤 🐱‍🏍 🤷‍♂️
-                </div>
-                <div>
-                  <!-- <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                  <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Documentation</a
-                  >
-
-                  <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Support</a
-                  > -->
-
-                  <div class="contact-modal-content">
-                    <h2>LIÊN HỆ VỚI CHÚNG TÔI</h2>
-                    <p>Trung tâm Tư vấn Khách hàng</p>
-                    <span class="contact-sdt"><i class="fa-solid fa-phone">📞0383980213</i> </span>
-                    <span class="email">
-                    </span><br>
-                    <span class="email-contact">
-                        <i class="fa-regular fa-envelope">
-                            <span class="email-detail">📩2251120014@ut.edu.vn</span>
-                        </i>
-                    </span><br>
-                    <span class="facebook">
-
-                        <a href="https://www.facebook.com/profile.php?id=100036738556993&mibextid=LQQJ4d"
-                        target="_blank"
-                        ><i
-                                class="fa-brands fa-facebook"></i>🌎Facebook</a>
-                    </span>
-                    <p class="thank">
-                      <a href="http://127.0.0.1:5500/src/main/resources/Template/Webapp/html/index.html" target="_blank">POD BOOKING</a>
-                       rất hân hạnh được hỗ trợ quý khách.</p>
-                </div>
-      
-                </div>
-              </div>
-            </footer>
-            <!-- / Footer -->
+            <!-- call Api Footer -->
+            <div id="footer"></div>
+            <!-- / call Api Footer -->
 
             <div class="content-backdrop fade"></div>
           </div>
@@ -1262,5 +1101,14 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- Call ServiceApi.js-->
+    <script src="../js/serviceApi.js"></script>
+
+    <!-- Call Navbar.js-->
+      <script src="../js/navbar.js"></script>
+
+    <!-- Call Footer.js-->
+    <script src="../js/footer.js"></script>
   </body>
 </html>
