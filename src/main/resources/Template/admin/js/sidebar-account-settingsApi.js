@@ -9,7 +9,7 @@
 
 
 // Lấy thẻ <div> có id="sidebar-account-settings"
-const accountContainer = document.getElementById('sidebar-account-settings');
+const accountContainer = document.getElementById('sidebarSettings');
 
 // Đường dẫn tương đối tới file sidebar-account-settings.html
 const accountPath = '../layout/sidebar-account-settings.html';
