@@ -253,7 +253,7 @@
 
                 </div>
             </div>
-    </div>
+        </div>
     </div>
     </header>
     <section class="slider">
@@ -325,96 +325,123 @@
                     <h3 class="section-subheading text-muted">Các loại phòng tiêu biểu</h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 1-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="../static/img/portfolio/1.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading"> Phòng Standard Với Ban Công</div>
-                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 2-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="../static/img/portfolio/2.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading"> Phòng Superior Suite 1 Giường Đôi</div>
-                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 3-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="../static/img/portfolio/3.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading"> Phòng Superior Suite 2 Giường Đôi</div>
-                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                        <!-- Portfolio item 4-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="../static/img/portfolio/4.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Phòng Family Room 2 Phòng Ngủ</div>
-                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                        <!-- Portfolio item 5-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="../static/img/portfolio/5.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Căn Hộ 2 Phòng Ngủ</div>
-                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <!-- Portfolio item 6-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="../static/img/portfolio/6.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Căn Hộ 2 Phòng Ngủ với hồ bơi riêng</div>
-                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>
-                            </div>
-                        </div>
-                    </div>
+                    <script>
+                        // Hàm để fetch dữ liệu từ API và render ra HTML
+                        async function fetchPortfolios() {
+                            try {
+                                // Gọi API lấy danh sách phòng
+                                const response = await fetch('http://localhost:8080/api/portfolios');
+                                const portfolios = await response.json();
+
+                                // Lấy container của phần danh sách phòng
+                                const container = document.getElementById('room-container');
+
+                                // Duyệt qua danh sách phòng và tạo HTML
+                                portfolios.forEach((portfolio) => {
+                                    const portfolioHTML = `
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <!-- Portfolio item -->
+            <div class="portfolio-item">
+              <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal${portfolio.id}">
+                <div class="portfolio-hover">
+                  <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                </div>
+                <img class="img-fluid" src="${portfolio.image}" alt="${portfolio.alt}" />
+              </a>
+              <div class="portfolio-caption">
+                <div class="portfolio-caption-heading">${portfolio.name}</div>
+                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>
+              </div>
+            </div>
+          </div>
+        `;
+
+                                    // Thêm HTML này vào container
+                                    container.insertAdjacentHTML('beforeend', portfolioHTML);
+                                });
+                            } catch (error) {
+                                console.error('Lỗi khi gọi API:', error);
+                            }
+                        }
+
+                        // Gọi hàm fetchRooms khi trang được tải
+                        fetchPortfolios();
+                    </script>
+<!--                    <div class="col-lg-4 col-sm-6 mb-4">-->
+<!--                        &lt;!&ndash; Portfolio item 2&ndash;&gt;-->
+<!--                        <div class="portfolio-item">-->
+<!--                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">-->
+<!--                                <div class="portfolio-hover">-->
+<!--                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>-->
+<!--                                </div>-->
+<!--                                <img class="img-fluid" src="../static/img/portfolio/2.jpg" alt="..." />-->
+<!--                            </a>-->
+<!--                            <div class="portfolio-caption">-->
+<!--                                <div class="portfolio-caption-heading"> Phòng Superior Suite 1 Giường Đôi</div>-->
+<!--                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-sm-6 mb-4">-->
+<!--                        &lt;!&ndash; Portfolio item 3&ndash;&gt;-->
+<!--                        <div class="portfolio-item">-->
+<!--                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">-->
+<!--                                <div class="portfolio-hover">-->
+<!--                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>-->
+<!--                                </div>-->
+<!--                                <img class="img-fluid" src="../static/img/portfolio/3.jpg" alt="..." />-->
+<!--                            </a>-->
+<!--                            <div class="portfolio-caption">-->
+<!--                                <div class="portfolio-caption-heading"> Phòng Superior Suite 2 Giường Đôi</div>-->
+<!--                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">-->
+<!--                        &lt;!&ndash; Portfolio item 4&ndash;&gt;-->
+<!--                        <div class="portfolio-item">-->
+<!--                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">-->
+<!--                                <div class="portfolio-hover">-->
+<!--                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>-->
+<!--                                </div>-->
+<!--                                <img class="img-fluid" src="../static/img/portfolio/4.jpg" alt="..." />-->
+<!--                            </a>-->
+<!--                            <div class="portfolio-caption">-->
+<!--                                <div class="portfolio-caption-heading">Phòng Family Room 2 Phòng Ngủ</div>-->
+<!--                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">-->
+<!--                        &lt;!&ndash; Portfolio item 5&ndash;&gt;-->
+<!--                        <div class="portfolio-item">-->
+<!--                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">-->
+<!--                                <div class="portfolio-hover">-->
+<!--                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>-->
+<!--                                </div>-->
+<!--                                <img class="img-fluid" src="../static/img/portfolio/5.jpg" alt="..." />-->
+<!--                            </a>-->
+<!--                            <div class="portfolio-caption">-->
+<!--                                <div class="portfolio-caption-heading">Căn Hộ 2 Phòng Ngủ</div>-->
+<!--                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 col-sm-6">-->
+<!--                        &lt;!&ndash; Portfolio item 6&ndash;&gt;-->
+<!--                        <div class="portfolio-item">-->
+<!--                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">-->
+<!--                                <div class="portfolio-hover">-->
+<!--                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>-->
+<!--                                </div>-->
+<!--                                <img class="img-fluid" src="../static/img/portfolio/6.jpg" alt="..." />-->
+<!--                            </a>-->
+<!--                            <div class="portfolio-caption">-->
+<!--                                <div class="portfolio-caption-heading">Căn Hộ 2 Phòng Ngủ với hồ bơi riêng</div>-->
+<!--                                <div class="portfolio-caption-subheading text-muted"><a href="../html/datphong.html">Đặt phòng</a></div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
         </section>
