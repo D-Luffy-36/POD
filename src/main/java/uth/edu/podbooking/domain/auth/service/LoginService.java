@@ -1,30 +1,39 @@
 package uth.edu.podbooking.domain.auth.service;
 
-import com.nimbusds.jose.*;
-import com.nimbusds.jose.crypto.MACSigner;
-import com.nimbusds.jose.crypto.MACVerifier;
-import com.nimbusds.jwt.JWTClaimsSet;
-import com.nimbusds.jwt.SignedJWT;
-import lombok.Data;
-import lombok.experimental.NonFinal;
+import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import com.nimbusds.jose.JOSEException;
+import com.nimbusds.jose.JWSAlgorithm;
+import com.nimbusds.jose.JWSHeader;
+import com.nimbusds.jose.JWSSigner;
+import com.nimbusds.jose.JWSVerifier;
+import com.nimbusds.jose.crypto.MACSigner;
+import com.nimbusds.jose.crypto.MACVerifier;
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.SignedJWT;
+
+import lombok.Data;
+import lombok.experimental.NonFinal;
 import uth.edu.podbooking.domain.account.entity.Account;
+import uth.edu.podbooking.domain.account.entity.Permission;
+import uth.edu.podbooking.domain.account.entity.Role;
 import uth.edu.podbooking.domain.account.repository.AccountRepository;
 import uth.edu.podbooking.domain.auth.dto.request.AuthTokenRequest;
 import uth.edu.podbooking.domain.auth.dto.request.LoginRequest;
 import uth.edu.podbooking.domain.auth.dto.respone.AuthTokenResponse;
 import uth.edu.podbooking.domain.auth.dto.respone.LoginResponse;
 import uth.edu.podbooking.domain.auth.mapper.LoginMapper;
-import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 @Data
@@ -45,32 +54,50 @@ public class LoginService {
     protected  String secret;
 
     public LoginResponse auth(LoginRequest loginRequest) {
+
         Optional<Account> accountOptional = this.accountRepository.findByEmail(loginRequest.getEmail());
         if (accountOptional.isEmpty()) {
             return new LoginResponse(false, "");
         }
+
+        // check pass hash table
         if (!passwordEncoder.matches(loginRequest.getPassword(), accountOptional.get().getPassword())) {
             return new LoginResponse(false, "");
         }
+      
+        // set roles = ["USER", "MANAGER", "STAFF"]
+        Set<String> roles = accountOptional
+                    .map(Account::getRoles) // Optional< Set<Role> >
+                    .stream() // Chuyển Optional<Set<Role>> thành Stream<Set<Role>>
+                    .flatMap(Set::stream) // Chuyển Stream<Set<Role>> thành Stream<Role>
+                    .map(Role::getCode) // Stream<Role> -> Stream<String>
+                    .collect(Collectors.toSet()); // Thu thập thành Set<String>
+                
+        Set<String> permissions = accountOptional
+                    .map(Account::getRoles) // Optional<Set<Role>>
+                    .orElse(Set.of())       // Nếu Optional rỗng thì trả về Set rỗng
+                    .stream()               // Stream<Role>
+                    .map(Role::getPermissions) // Stream<Set<Permission>>
+                    .flatMap(Set::stream)   // Stream<Permission>
+                    .map(Permission::getCode) // Stream<String> (chuyển Permission thành String)
+                    .collect(Collectors.toSet()); // Set<String>
 
-        Optional<String> token = generateToken(loginRequest.getEmail());
+
+        Optional<String> token = generateToken(loginRequest.getEmail(), roles, permissions);
         return new LoginResponse(true, token.get());
     }
 
-    public Optional<String> generateToken(String email) {
+    public Optional<String> generateToken(String email, Set<String> roles, Set<String> permissions) {
         // hearder
         JWSHeader header = new JWSHeader(JWSAlgorithm.HS512);
         Date expirationTime = new Date(new Date().getTime() + 3600 * 1000);
-        List<String> permissions = Arrays.asList("READ", "WRITE");
-
-        // payload
-        // tìm Email => check Role + permission
+      
         JWTClaimsSet claims = new JWTClaimsSet.Builder()
                 .subject(email)
                 .issuer("uth.edu.podbooking")
                 .expirationTime(expirationTime)// Thời gian hết hạn
-                .claim("permission", permissions.get(0))
-                .claim("role", "ADMIN") // Claim vai trò
+                .claim("roles", roles) // 
+                .claim("permissions", permissions)
                 .build();
 
         // Tạo SignedJWT và ký token

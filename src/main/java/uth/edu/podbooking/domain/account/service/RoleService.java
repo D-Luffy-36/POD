@@ -1,15 +1,14 @@
 package uth.edu.podbooking.domain.account.service;
 
 
-import lombok.AllArgsConstructor;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
+
+import lombok.AllArgsConstructor;
 import uth.edu.podbooking.domain.account.dto.response.RoleResponse;
-import uth.edu.podbooking.domain.account.enums.Role;
 import uth.edu.podbooking.domain.account.mapper.RoleMapper;
 import uth.edu.podbooking.domain.account.repository.RoleReppository;
-
-import java.util.List;
-import java.util.Set;
 
 @Service
 @AllArgsConstructor

@@ -1,9 +1,10 @@
 package uth.edu.podbooking.domain.auth.controller;
 
-import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import lombok.AllArgsConstructor;
 import uth.edu.podbooking.common.Response;
 import uth.edu.podbooking.domain.auth.dto.request.AuthTokenRequest;
 import uth.edu.podbooking.domain.auth.dto.request.LoginRequest;
@@ -27,7 +28,6 @@ public class LoginController {
     @PostMapping("/token")
     public Response<AuthTokenResponse> authToken(@RequestBody AuthTokenRequest authTokenRequest) {
         AuthTokenResponse authTokenResponse = this.loginService.checkToken(authTokenRequest);
-
         return Response.<AuthTokenResponse>builder()
                 .result(authTokenResponse)
                 .build();

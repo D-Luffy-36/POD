@@ -1,11 +1,23 @@
 package uth.edu.podbooking.domain.account.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
-import uth.edu.podbooking.domain.location.entity.Location;
-
 import java.util.Date;
 import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import uth.edu.podbooking.domain.location.entity.Location;
 
 
 @Getter
@@ -23,9 +35,10 @@ public class Account {
 
     private String lastName;
     private String fullName;
+    @Column(unique=true)
     private String phone;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique=true)
     private String email;
 
     @Column(nullable = false)

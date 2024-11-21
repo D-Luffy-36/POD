@@ -1,4 +1,9 @@
 package uth.edu.podbooking.config;
+import java.nio.charset.StandardCharsets;
+
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,18 +15,16 @@ import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-import java.nio.charset.StandardCharsets;
 
 
 @Configuration
 
 public class SecurityConfig {
-    private final String[] PUBLIC_ENDPOINTS = {"/accounts", "/login", "token"};
+    private final String[] PUBLIC_ENDPOINTS = {"/accounts", "/login", "token", "/register"};
 
     @Value("${jwt.signerKey}")
     private String SECRET;
+    @SuppressWarnings("deprecation")
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 

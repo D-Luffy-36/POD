@@ -1,13 +1,22 @@
 package uth.edu.podbooking.domain.pod.entity;
 
 
-import jakarta.persistence.*;
+import java.util.Set;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import uth.edu.podbooking.domain.workspace.dto.WorkSpaceResponse;
-import uth.edu.podbooking.domain.workspace.entity.WorkSpace;
-
-import java.util.Set;
 
 @Entity
 @Getter
@@ -38,13 +47,6 @@ public class Pod {
             joinColumns = @JoinColumn(name = "pod_id"),
             inverseJoinColumns = @JoinColumn(name = "anmenity_id"))
     Set<Amenity> amenities;
-
-    @ManyToMany
-    @JoinTable(
-            name = "workspace_pod",
-            joinColumns = @JoinColumn(name = "pod_id"),
-            inverseJoinColumns = @JoinColumn(name = "workspace_id"))
-    Set<WorkSpace> workspaces;
 
 
 }
