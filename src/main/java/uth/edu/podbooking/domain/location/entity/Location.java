@@ -1,9 +1,12 @@
 package uth.edu.podbooking.domain.location.entity;
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.*;
-import uth.edu.podbooking.domain.account.entity.Account;
+import uth.edu.podbooking.domain.workspace.entity.WorkSpace;
 
 @Entity
 @Table(name = "locations")
@@ -21,4 +24,7 @@ public class Location {
     private String country;
     private String phone;
 
+
+    @ManyToMany(mappedBy = "locations")
+    private Set<WorkSpace> workspaces = new HashSet<>();
 }

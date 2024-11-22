@@ -16,8 +16,6 @@ import java.util.Set;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class WorkSpaceResponse {
+    private Long id;
     private String name;
-    
-    private Set<PodRespone> pods;
-    private Set<LocationResponse> locations;
 }

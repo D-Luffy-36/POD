@@ -27,7 +27,6 @@ import uth.edu.podbooking.domain.account.service.AccountService;
 @Data
 @AllArgsConstructor
 
-
 @RequestMapping("/accounts")
 public class AccountController {
     private final AccountService accountService;

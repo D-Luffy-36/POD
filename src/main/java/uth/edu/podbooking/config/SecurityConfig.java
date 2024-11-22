@@ -20,7 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 
 public class SecurityConfig {
-    private final String[] PUBLIC_ENDPOINTS = {"/accounts", "/login", "token", "/register"};
+    private final String[] PUBLIC_ENDPOINTS = {"/accounts", "/login", "/token", "/register"};
 
     @Value("${jwt.signerKey}")
     private String SECRET;
@@ -40,7 +40,6 @@ public class SecurityConfig {
         httpSecurity.oauth2ResourceServer(oauth2 -> oauth2.jwt(
                 jwtConfigurer -> jwtConfigurer.decoder(jwtDecoder())
         ));
-
         return httpSecurity.build();
     }
 
