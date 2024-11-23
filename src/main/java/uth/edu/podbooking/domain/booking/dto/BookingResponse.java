@@ -16,7 +16,10 @@ import uth.edu.podbooking.domain.workspace.dto.WorkSpaceResponse;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
 public class BookingResponse {
-      private Long bookingId; // ID của Booking
+    private String customerName; // Tên của khách hàng
+    private String customerEmail; // Email của khách hàng
+
+    private Long bookingId; // ID của Booking
     private String status; // Trạng thái của Booking
     private Double price; // Giá của Booking
     private LocalDateTime startTime; // Thời gian bắt đầu

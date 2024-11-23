@@ -102,7 +102,7 @@ public class BookingService {
         // Lấy tất cả các Booking từ database
         List<Booking> bookings = bookingRepository.findAll();
 
-        // Chuyển đổi các Booking thành BookingResponse nếu cần
+        // Chuyển đổi các Booking thành BookingResponse
         return bookings.stream()
                        .map(booking -> bookingMapper.toBookingResponse(booking))
                        .collect(Collectors.toList());
